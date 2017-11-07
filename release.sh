@@ -15,18 +15,9 @@ VERSION=`node -e "console.log(require('./package.json').version);"`
 echo "Creating release ${VERSION}" 
 git tag $VERSION && git push $GH_REMOTE $VERSION || true
 # Merge back into develop and push those changes
-#git fetch $GH_REMOTE && git checkout develop && git merge $GH_REMOTE/master && git push $GH_REMOTE develop
-echo "fetch"
-git fetch $GH_REMOTE
-echo "checkout"
-git checkout develop
-echo "merge"
-git merge $GH_REMOTE/master
-echo "push"
-git push $GH_REMOTE develop
+git fetch $GH_REMOTE && git checkout develop && git merge $GH_REMOTE/master && git push $GH_REMOTE develop
 # npm publish 
 echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-echo "publish"
 npm publish
 
 # Deleting the old release branch
