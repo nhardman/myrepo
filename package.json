@@ -1,6 +1,6 @@
 {
   "name": "nhardman-test-package",
-  "version": "4.1.5",
+  "version": "4.1.6",
   "description": "Generator for Kitura REST webservice servers",
   "main": "app/index.js",
   "scripts": {
