@@ -7,12 +7,9 @@ branches:
   - "/^issue.*$/"
   - /^greenkeeper/.*$/
 node_js:
-- '4'
 - '6'
-- '8'
 os:
 - linux
-- osx
 dist: trusty
 osx_image: xcode9
 before_install:
@@ -41,4 +38,3 @@ jobs:
 env:
   global:
   - CXX=g++-4.8
-  - secure: q3cBn+YgyK2fXt3VxXSc/chYx2KNacQAYlb429opCKMVlP6KKb7aEDygQfduCsQmBj5bMOVfAMw8nXzn/OzCCjBJCwO3AQudbfVvgUdkHACDVwG+ZeicxfiKXbL3YOulb/vU5i4Up24mtHa3rJXYvhL9U27W+4r0TIb9P6jHUYETtkLLUfC2tw5aBnGxuLmIJGYHgSgUNolKIH5EBYb4y8PjWQpFXRLUltmunJswxoSXGIqj/OE1RL/9dJ7r2fNlr6NtSnSwoElekvHZRFATLzucuwZP8HpR9mNW3dt6b8Leq63kDJjwctwjlrTqkBPo5Kx76o/+HISUq9eueqtc+iUhoWVCSRk4dwSJMOp0/j4BqvOCOB1Sa5eL0WvY048v6OmViZzehB4h+Kd+ShcDN24yV0Ci9vEnMzS60vEiXWaUTTVsxdmh/e9Ldw08cCYukCE6Ai7hIU9rVVArc9l1aQwR16PxVtiryyhgVjA9niZvl2i25SvnKjp3K98NB5bSi33hIlgS7nmJ4HTPTWfujb9TeWeOir/q0+pSRt5u1I/KRHUgMSTUpOT0YRMHyOsRTHz5cj5Tr1SbH8FGSNe8Y3ryFOFq28wRx+4gQ/KJAhfjSDzN5dyta2ukH5dqOxBspZeMe6CRzSKIsz0a2ttsEVowcoQQx8R/rt2uOJFOZI8=
