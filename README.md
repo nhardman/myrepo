@@ -2,6 +2,11 @@ test README file 5.0.0
 
 <h2>Some raw html</h2>
 
+<form id="my_form">
+  <!-- More HTML -->
+  <a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">submit</a>
+</form>
+
 <form name="myform" action="handle-data.php" method="post">
   <label for="query">Search:</label>
   <input type="text" name="query" id="query"/>
