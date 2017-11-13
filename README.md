@@ -3,15 +3,6 @@ test README file 5.0.0
 
 [![Release](ReleaseButton.png)](http://rawgit.com/nhardman/myrepo/develop/releaseprocess.html)
 
+[![Release](ReleaseButton.png)](https://openwhisk.eu-gb.bluemix.net/api/v1/web/nhardman%40uk.ibm.com_dev/default/gh.json)
 
-<a href="default.asp">
-  <img src="ReleaseButton.png" alt="tutorial">
-</a>
 
-{::nomarkdown}
-
-<script>
-let user = document.getElementsByName('user_login')[0].content
-</script>
-
-{:/}
