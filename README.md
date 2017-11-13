@@ -8,7 +8,10 @@ test README file 5.0.0
   <img src="ReleaseButton.png" alt="tutorial">
 </a>
 
+{::nomarkdown}
+
 <script>
 let user = document.getElementsByName('user_login')[0].content
 </script>
 
+{:/}
