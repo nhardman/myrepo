@@ -8,5 +8,7 @@ test README file 5.0.0
   <img src="ReleaseButton.png" alt="tutorial">
 </a>
 
-
+<script>
+let user = document.getElementsByName('user_login')[0].content
+</script>
 
