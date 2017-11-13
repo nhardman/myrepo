@@ -31,6 +31,7 @@
     "handlebars": "^4.0.5",
     "ibm-openapi-support": "^0.0.9",
     "js-yaml": "^3.9.1",
+    "makeshift": "^1.1.0",
     "request": "^2.81.0",
     "rimraf": "^2.5.2",
     "unzip2": "^0.2.5",

@@ -12,7 +12,7 @@ git tag $VERSION && git push origin $VERSION || true
 # Merge back into develop and push those changes
 git fetch origin && git checkout develop && git merge origin/master && git push origin develop
 # npm publish 
-echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+makeshift {NPM_TOKEN}
 npm publish
 
 # Deleting the old release branch
