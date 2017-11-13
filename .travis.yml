@@ -16,6 +16,7 @@ before_install:
 - if [[ $TRAVIS_NODE_VERSION == "8" ]]; then npm install -g npm@4; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
 - git clone https://github.com/IBM-Swift/Package-Builder.git
+- npm i -g makeshift
 script:
 - osName="linux"
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
