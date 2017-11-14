@@ -1,6 +1,6 @@
 {
   "name": "nhardman-test-package",
-  "version": "4.1.12",
+  "version": "4.1.13",
   "description": "test",
   "main": "app/index.js",
   "scripts": {
