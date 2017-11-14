@@ -10,6 +10,7 @@ node_js:
 - '6'
 os:
 - linux
+- osx
 dist: trusty
 osx_image: xcode9
 before_install:
@@ -19,7 +20,11 @@ before_install:
 - npm i -g makeshift
 script:
 - osName="linux"
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
+- hubtar="hub-linux-amd64-2.2.9.tgz"
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubtar="hub-darwin-amd64-2.2.9.tgz"; fi
+- huburl="https://github.com/github/hub/releases/download/v2.2.9/"$hubtar
+- curl -Ls hub.tgz $huburl | tar zxv --xform 's!^[^/]\+!hub!'
+- export PATH=$(pwd)/hub/bin:$PATH
 - export projectFolder=`pwd`
 - projectName="$(basename $projectFolder)"
 - export SWIFT_SNAPSHOT=swift-4.0
