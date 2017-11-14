@@ -1,6 +1,6 @@
 # Script to release to NPM and publish tag
 
-# REMEMBER: this script is executed in the context of a travis maching.
+# REMEMBER: this script is executed in the context of a travis build machine.
 
 # remove origin remote
 git remote rm origin
