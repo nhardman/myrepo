@@ -1,7 +1,7 @@
 {
   "name": "nhardman-test-package",
   "version": "4.1.10",
-  "description": "Generator for Kitura REST webservice servers",
+  "description": "test",
   "main": "app/index.js",
   "scripts": {
     "test": "standard --env mocha && mocha 'test/unit/**/*.js'",
