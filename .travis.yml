@@ -20,11 +20,12 @@ before_install:
 - npm i -g makeshift
 script:
 - osName="linux"
-- hubtar="hub-linux-amd64-2.2.9.tgz"
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubtar="hub-darwin-amd64-2.2.9.tgz"; fi
-- huburl="https://github.com/github/hub/releases/download/v2.2.9/"$hubtar
-- curl -Ls hub.tgz $huburl | tar zxv --xform 's!^[^/]\+!hub!'
-- export PATH=$(pwd)/hub/bin:$PATH
+- hubVersion="2.2.9"
+- hubBin="hub-linux-amd64-${hubVersion}"
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubBin="hub-darwin-amd64-${hubVersion}"; fi
+- hubUrl="https://github.com/github/hub/releases/download/v${hubVersion}/${hubBin}.tgz"
+- curl -Ls $hubUrl | tar zxv
+- export PATH=$(pwd)/${hubBin}/bin:$PATH
 - export projectFolder=`pwd`
 - projectName="$(basename $projectFolder)"
 - export SWIFT_SNAPSHOT=swift-4.0
