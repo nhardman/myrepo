@@ -17,14 +17,12 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
 - git clone https://github.com/IBM-Swift/Package-Builder.git
 - npm i -g makeshift
+- wget https://github.com/github/hub/releases/download/v2.2.9/hub-linux-386-2.2.9.tgz
+- tar -xvzf hub-linux-386-2.2.9.tgz
+- export PATH=${PATH}:$PWD/hub-linux-386-2.2.9/bin/
 script:
 - osName="linux"
-- hubVersion="2.2.9"
-- hubBin="hub-linux-amd64-${hubVersion}"
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubBin="hub-darwin-amd64-${hubVersion}"; fi
-- hubUrl="https://github.com/github/hub/releases/download/v${hubVersion}/${hubBin}.tgz"
-- curl -Ls $hubUrl | tar zxv
-- export PATH=$(pwd)/${hubBin}/bin:$PATH
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
 - export projectFolder=`pwd`
 - projectName="$(basename $projectFolder)"
 - export SWIFT_SNAPSHOT=swift-4.0
