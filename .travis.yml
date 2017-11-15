@@ -25,13 +25,13 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubBin="hub-darwin-amd64-${hubVersion}"; fi
 - hubUrl="https://github.com/github/hub/releases/download/v${hubVersion}/${hubBin}.tgz"
 - curl -Ls $hubUrl | tar zxv
-- # echo "export PATH=$(pwd)/${hubBin}/bin:$PATH"
+- export PATH=$(pwd)/${hubBin}/bin:$PATH
 - export projectFolder=`pwd`
 - projectName="$(basename $projectFolder)"
 - export SWIFT_SNAPSHOT=swift-4.0
 - source ./Package-Builder/install-swift.sh
-- if [[ $TRAVIS_EVENT_TYPE == "cron" ]]; then npm run testsdkgen; fi
-- if [[ $TRAVIS_EVENT_TYPE != "cron" ]]; then npm run coverage && npm run report-coverage; fi
+- #if [[ $TRAVIS_EVENT_TYPE == "cron" ]]; then npm run testsdkgen; fi
+- #if [[ $TRAVIS_EVENT_TYPE != "cron" ]]; then npm run coverage && npm run report-coverage; fi
 jobs:
   include:
   - stage: Review
