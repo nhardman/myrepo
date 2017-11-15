@@ -11,7 +11,8 @@ fi
 # We are processing a build resulting from merging a feature into develop
 # Proceed to create a release branch updating the version and change log
 # and a pull request from develop->master for the new release
-USER=SwiftDevOps:${GH_TOKEN}
+GITHUB_TOKEN=$GH_TOKEN
+USER=SwiftDevOps:${GITHUB_TOKEN}
 git config user.name "Generator bot"
 git config push.default simple
 git remote rm origin
@@ -49,5 +50,4 @@ curl -u ${USER} -X PUT -H "Content-Type: application/json" -H "Accept: applicati
 # create a pull request to master
 #curl -u ${USER} -H "Content-Type: application/json" -X POST -d "{\"title\": \"Release ${VERSION}\", \"head\": \"${BRANCH}\", \"base\": \"master\", \"body\": \"Do NOT attempt to push further changes to this branch.\"}" https://api.github.com/repos/nhardman/myrepo/pulls
 
-GITHUB_TOKEN=$GH_TOKEN
 hub pull-request -b master -m "NRH Do NOT attempt to push further changes to this branch."
