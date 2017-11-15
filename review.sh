@@ -11,7 +11,7 @@ fi
 # We are processing a build resulting from merging a feature into develop
 # Proceed to create a release branch updating the version and change log
 # and a pull request from develop->master for the new release
-GITHUB_TOKEN=$GH_TOKEN
+export GITHUB_TOKEN=$GH_TOKEN
 USER=SwiftDevOps:${GITHUB_TOKEN}
 git config user.name "Generator bot"
 git config push.default simple

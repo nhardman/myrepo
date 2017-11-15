@@ -2,7 +2,7 @@
 
 # REMEMBER: this script is executed in the context of a travis build machine.
 
-GITHUB_TOKEN=$GH_TOKEN
+export GITHUB_TOKEN=$GH_TOKEN
 # remove origin remote
 git remote rm origin
 #git remote add origin https://SwiftDevOps:${GITHUB_TOKEN}@github.com/IBM-Swift/generator-swiftserver
