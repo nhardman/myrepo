@@ -25,7 +25,7 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; hubBin="hub-darwin-amd64-${hubVersion}"; fi
 - hubUrl="https://github.com/github/hub/releases/download/v${hubVersion}/${hubBin}.tgz"
 - curl -Ls $hubUrl | tar zxv
-- export PATH=$(pwd)/${hubBin}/bin:$PATH
+- # echo "export PATH=$(pwd)/${hubBin}/bin:$PATH"
 - export projectFolder=`pwd`
 - projectName="$(basename $projectFolder)"
 - export SWIFT_SNAPSHOT=swift-4.0
