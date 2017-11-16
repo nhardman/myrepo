@@ -6,17 +6,24 @@ if ruby ./isrelease.rb; then
   # reset the release release marker.
   ruby ./resetrelease.rb
   git add release.txt
+  echo $(git status)
   git commit -m "reset release marker"
+  echo $(git status)
   git push origin master
+  echo "here1"
   # remove origin remote
   git remote rm origin
+  echo "here2"
   #git remote add origin https://SwiftDevOps:${GITHUB_TOKEN}@github.com/IBM-Swift/generator-swiftserver
   git remote add origin https://nhardman:$GITHUB_TOKEN@github.com/nhardman/myrepo
+  echo "here3"
   VERSION=`node -e "console.log(require('./package.json').version);"`
   echo "Creating release ${VERSION}" 
   git tag $VERSION && git push origin $VERSION || true
+  echo "here4"
   # Merge back into develop and push those changes
   git fetch origin && git checkout develop && git merge origin/master && git push origin develop
+  echo "here5"
   # npm publish 
   makeshift $NPM_TOKEN
   npm publish
