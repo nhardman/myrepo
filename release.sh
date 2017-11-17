@@ -3,13 +3,6 @@
 # REMEMBER: this script is executed in the context of a travis build machine.
 
 if ruby ./isrelease.rb; then
-  # reset the release release marker.
-  ruby ./resetrelease.rb
-  git add release.txt
-  echo $(git status)
-  git commit -m "reset release marker"
-  echo $(git status)
-  git push origin master
   echo "here1"
   # remove origin remote
   git remote rm origin
@@ -19,6 +12,13 @@ if ruby ./isrelease.rb; then
   echo "here3"
   VERSION=`node -e "console.log(require('./package.json').version);"`
   echo "Creating release ${VERSION}" 
+  # reset the release release marker.
+  ruby ./resetrelease.rb
+  git add release.txt
+  echo $(git status)
+  git commit -m "reset release marker"
+  echo $(git status)
+  git push origin master
   git tag $VERSION && git push origin $VERSION || true
   echo "here4"
   # Merge back into develop and push those changes
