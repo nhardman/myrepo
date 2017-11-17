@@ -1,2 +1,2 @@
 # set release=true to trigger the release process
-release = true
+release = false
