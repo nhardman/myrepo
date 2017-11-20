@@ -49,6 +49,6 @@ git push -u origin $BRANCH
 curl -u ${USER} -X PUT -H "Content-Type: application/json" -H "Accept: application/vnd.github.loki-preview+json" -d "{\"required_status_checks\": {\"strict\": true,\"contexts\": []},\"required_pull_request_reviews\":{},\"restrictions\": null,\"enforce_admins\": true}" "https://api.github.com/repos/nhardman/myrepo/branches/$BRANCH/protection"
 
 # create a pull request to master
-#curl -u ${USER} -H "Content-Type: application/json" -X POST -d "{\"title\": \"Release ${VERSION}\", \"head\": \"${BRANCH}\", \"base\": \"master\", \"body\": \"Do NOT attempt to push further changes to this branch.\"}" https://api.github.com/repos/nhardman/myrepo/pulls
+curl -u ${USER} -H "Content-Type: application/json" -X POST -d "{\"title\": \"Release ${VERSION}\", \"head\": \"${BRANCH}\", \"base\": \"master\", \"body\": \"Do NOT attempt to push further changes to this branch.\"}" https://api.github.com/repos/nhardman/myrepo/pulls
 
-hub pull-request -b master -m "Do NOT attempt to push further changes to this branch."
+#hub pull-request -b master -m "Do NOT attempt to push further changes to this branch."
