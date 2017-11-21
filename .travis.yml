@@ -38,7 +38,7 @@ jobs:
   - stage: Releases
     language: ruby
     script: "./release.sh"
-    if: (type = api OR type = push) AND branch = master
+    if: type = api AND branch = master
 env:
   global:
   - CXX=g++-4.8
