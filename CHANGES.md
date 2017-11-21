@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.27"></a>
+## [4.1.27](https://github.com/IBM-Swift/generator-swiftserver/compare/4.1.16...4.1.27) (2017-11-21)
+
+
+
 <a name="4.1.26"></a>
 ## [4.1.26](https://github.com/IBM-Swift/generator-swiftserver/compare/4.1.16...4.1.26) (2017-11-21)
 
