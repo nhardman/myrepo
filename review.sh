@@ -52,5 +52,5 @@ curl -u ${USER} -X PUT -H "Content-Type: application/json" -H "Accept: applicati
 #curl -u ${USER} -H "Content-Type: application/json" -X POST -d "{\"title\": \"Release ${VERSION}\", \"head\": \"${BRANCH}\", \"base\": \"master\", \"body\": \"Do NOT attempt to push further changes to this branch.\"}" https://api.github.com/repos/nhardman/myrepo/pulls
 
 #hub pull-request -b master -m "Release ${VERSION}\n\nDo NOT attempt to push further changes to this branch."
-hub pull-request -b master -m "Release ${VERSION}"'\n\nDo NOT attempt to push further changes to this branch.'
+hub pull-request -b master -m "Release ${VERSION}"$'\n\nDo NOT attempt to push further changes to this branch.'
 #hub pull-request -b master -m "Do NOT attempt to push further changes to this branch."
