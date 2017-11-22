@@ -16,7 +16,7 @@ TEST release button goes to release page
 
 TEST OAUTH
 
-[![Release](ReleaseButton.png)](https://github.com/login/oauth/authorize)
+[![Release](ReleaseButton.png)](https://github.com/login/oauth/authorize?client_id=7388f7b5ae2e8cce42c0&client_secret=999c1d04ad87c93e50c4a62fc71d4994edf3ce4f)
 
 
 
