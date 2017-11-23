@@ -15,7 +15,7 @@ TEST release button goes to github_login
 
 TEST release button goes to github_login
 
-[![Release](ReleaseButton.png)](https://openwhisk.eu-gb.bluemix.net/api/v1/web/nhardman%40uk.ibm.com_dev/default/github_login.html/body)
+[![Release](ReleaseButton.png)](https://openwhisk.eu-gb.bluemix.net/api/v1/web/nhardman%40uk.ibm.com_dev/default/github_login.html)
 
 
 TEST OAUTH http
