@@ -72,14 +72,16 @@ def travis_login(github_token):
                 'User-Agent': 'MyClient/1.0.0'}
 
     response = requests.post(travis_login_api, headers=headers, data=json.dumps(payload))
+    response.raise_for_status()
+    result = response.json()
 
     if DEBUG:
         print('*** ACCESS TOKEN ***')
-        for k in response.keys():
-            print('%s => %s' % (k, response[k]))
+        for k in result.keys():
+            print('%s => %s' % (k, result[k]))
 
     # now it is possible to interract with travis using the returned travis token:
-    return response.json()['access_token']
+    return response['access_token']
 
 def travis_request_build(travis_access_token, org, repo):
     '''
@@ -93,9 +95,16 @@ def travis_request_build(travis_access_token, org, repo):
                 'Travis-API-Version': '3',
                 'Authorization': 'token %(tac)s' % {'tac': travis_access_token}}
     response = requests.post(travis_request_api, headers=headers, data=json.dumps(payload))
+    response.raise_for_status()
+
+    result = response.json()
+    if DEBUG:
+        print('*** TRAVIS REQUEST BUILD RESPONSE ***')
+        for k in result.keys():
+            print('%s => %s' % (k, result[k]))
 
     # return the response from the request
-    return response.json()
+    return result()
 
 def github_access_token(client_id, client_secret, code, state):
     github_access_token_api = 'https://github.com/login/oauth/access_token?' \
@@ -110,6 +119,7 @@ def github_access_token(client_id, client_secret, code, state):
                'Content-Type': 'application/json',
                'User-Agent': 'MyClient/1.0.0'}
     response = requests.post(github_access_token_api, headers=headers)
+    response.raise_for_status()
     access = response.json()
 
     return access
@@ -122,6 +132,7 @@ def github_user_credentials(access_token):
                'Content-Type': 'application/json',
                'User-Agent': 'MyClient/1.0.0'}
     response = requests.get(github_user_credentials_api, headers=headers)
+    response.raise_for_status()
     credentials = response.json()
 
     if DEBUG:
@@ -182,27 +193,27 @@ def main(args):
     credentials = github_user_credentials(access_token)
     login = credentials['login']
 
-    result = {'@type': 'pending'}
     # if the user is in our list, got ahead and do the release build
-    if login in authorized_users:
-        if DEBUG: print('user %s is authorized' % login)
+    if not login in authorized_users:
+        return error_response(401, 'Not Authorized')
 
+    if DEBUG: print('user %s is authorized' % login)
+
+    try:
         # now login to travis
         travis_access_token = travis_login(github_token)
+    except Exception as e:
+        return error_response(e.response.status_code, e.response.reason)
 
-        # next, talk to travis to request a new build on master
+    # next, talk to travis to request a new build on master
+    try:
+        # now request the build
         result = travis_request_build(travis_access_token, org=org, repo=repo)
-        if DEBUG:
-            print('*** TRAVIS REQUEST BUILD RESPONSE ***')
-            for k in result.keys():
-                print('%s => %s' % (k, result[k]))
-
         if result['@type'] != 'pending':
             # something went wrong
             return error_response(500, 'Internal Server Error')
-    else:
-        return error_response(401, 'Not Authorized')
+    except Exception as e:
+        return error_response(e.response.status_code, e.response.reason)
 
     # successfully submitted
     return success_response(200)
-
